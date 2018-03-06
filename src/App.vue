@@ -1,33 +1,20 @@
 <template>
-  <!-- Avec le setup webpack commun, les fichiers des 
-  components Vue se scindent en 3 partie (template,controller,style)
-  On met ici le HTML du component dans lequel on se trouve -->
+  
   <main id="app">
-    <!-- On peut mettre une balise représentant un autre component si
-    on l'a au préalable ajouter dans la liste des components du controller -->
-    <DogManager></DogManager>
-    <First></First>
+    
+    <accountmanager></accountmanager>
+    <!-- <First></First> -->
   </main>
 </template>
 
 <script>
-/**
- * Le component App est le composant racine de l'application, c'est de
- * lui que partira toute l'appli, on fait généralement en sorte de n'y
- * mettre peu ou pas de html ou de logique, juste l'appels aux autres
- * components.
- */
-import First from "./components/First.vue";
-import DogManager from "./components/DogManager.vue";
-/**
- * Ici, on crée le component app et on lui dit qu'il contient comme sous
- * component le component First
- */
+
+import accountmanager from "./components/accountmanager.vue";
+
 export default {
   name: "app",
   components: {
-    First,
-    DogManager
+    accountmanager
   }
 };
 </script>

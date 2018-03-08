@@ -12,12 +12,12 @@
             <th>Actions</th>    
         </thead>
         <tbody>
-            <tr v-for="operation in operations" :key="operation.id">
+            <tr v-for="(operation, index) in operations" :key="index">
                 <td>{{operation.id}}</td>
                 <td>{{operation.montant}}</td>
                 <td>{{operation.category}}</td>
                 <td>{{operation.date}}</td>
-                <button  value="remove" @click="remove(operation.id)">Remove</button>            
+                <button  value="remove" @click="remove(index)">Remove</button>            
             </tr>
         </tbody>
         </table>
@@ -35,8 +35,8 @@ export default {
     }
   },
   methods: {
-    remove(id) {
-      this.$emit("removeOperation", this.operation);
+    remove(index) {
+      this.$emit("removeOperation", index);
     }
   }
 };

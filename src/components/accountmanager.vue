@@ -4,7 +4,7 @@
       <h2 style="color: blue">Rélévé de compte</h2> <br>   
     
       <addcompt class="class" @addOperation= "operation => add(operation)"></addcompt>
-      <listoperation :operations="operations" @removeOperation= "id => remove(id)"> </listoperation>  
+      <listoperation :operations="operations" @removeOperation= "index => remove(index)"> </listoperation>  
   </section>
   
   
@@ -30,8 +30,8 @@ export default {
     add(operation) {
       this.operations.push(operation);
     },
-    remove(id) {
-      this.operations.splice(id, 1);
+    remove(index) {
+      this.operations.splice(index, 1);
     }
   }
 };

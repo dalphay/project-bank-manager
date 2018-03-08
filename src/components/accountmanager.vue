@@ -1,49 +1,40 @@
 <template>
   <section>
-   <img src="../assets/bnp.jpeg" alt="bnp">
-
-      <addcompt class="class" @addOperation="data => add(data)"></addcompt>
-       <listoperation :operations="operations"> </listoperation>
+    <img src="../assets/bnp.jpeg" alt="bnp">
+      <h2 style="color: blue">Rélévé de compte</h2> <br>   
+    
+      <addcompt class="class" @addOperation= "operation => add(operation)"></addcompt>
+      <listoperation :operations="operations" @removeOperation= "id => remove(id)"> </listoperation>  
   </section>
+  
+  
 </template>
 
 <script>
 import listoperation from "./listoperation.vue";
 import addcompt from "./addcompt.vue";
 
-
 export default {
   name: "accountmanager",
   components: {
-      listoperation,
-      addcompt,
+    listoperation,
+    addcompt
   },
   data: () => ({
-          operations: [
-            { id: 1, montant: "", category: "loyer", date: "2018-01-02"},
-            { id: 2, montant: "", category: "alimentaire", date: "2017-12-02" },
-            { id: 3, montant: "", category: "vetement", date: "2017-11-02" },
-            { id: 4, montant: "", category: "sport", date: "2017-8-23" }, 
-            { id: 5, montant: "", category: "loisirs", date: "2017-12-20" },         
-            { id: 6, montant: "", category: "salaire", date: "2017-12-17" }        
-                    
-            
-        ]
-      }),
+    operations: [
+      { id: 1, montant: "1000",category: "loyer",       date: "2018-01-02" },
+      { id: 2, montant: "300", category: "alimentaire", date: "2017-12-02" },
+    ]
+  }),
   methods: {
-
-    add(data) {
-        // data.id = this.operations.length
-        this.data.id.push(data)
-
+    add(operation) {
+      this.operations.push(operation);
     },
-    remove(index){
-        this.operations.splice(index, 1)
+    remove(id) {
+      this.operations.splice(id, 1);
     }
   }
 };
-
-
 </script>
 
 <style>

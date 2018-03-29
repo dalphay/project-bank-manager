@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       operation: {
-        id: 0,
+        // id: 0,
         category: "",
         type: "",
         text: "",

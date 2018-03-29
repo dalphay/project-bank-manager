@@ -1,7 +1,7 @@
 <template>
     <section>
 
-        <label for="" style="color: red;">Gestion des operations</label>
+        <label for="" style="color: red; font-size: 27px;">Gestion des operations</label>
 
         <table class="table">
         <thead>
@@ -12,15 +12,16 @@
             <th>Actions</th>    
         </thead>
         <tbody>
-            <tr v-for="(operation, index) in operations" :key="index">
+            <tr v-for="operation in operations" :key="operation.id">
                 <td>{{operation.id}}</td>
                 <td>{{operation.montant}}</td>
                 <td>{{operation.category}}</td>
                 <td>{{operation.date}}</td>
-                <button  value="remove" @click="remove(index)">Remove</button>            
+                <button  value="remove" @click="remove(operation.id)">Remove</button>            
             </tr>
         </tbody>
         </table>
+        <h4>Total: {{totalMarks}}</h4>
 
     </section>  
 </template>
@@ -34,14 +35,23 @@ export default {
       required: true
     }
   },
+  computed: {
+  totalMarks: function() {
+    let total = 0;
+    for(let i = 0; i < this.operations.length; i++){
+      total += parseInt(this.operations[i].montant);
+    }
+    return total;
+  }
+},
   methods: {
-    remove(index) {
-      this.$emit("removeOperation", index);
+    remove(id) {
+      this.$emit("removeOperation", id);
     }
   }
 };
 </script>
 
-<style>
-
+<style> 
+   
 </style>

@@ -1,10 +1,10 @@
 <template>
   <section>
-    <img src="../assets/bnp.jpeg" alt="bnp">
-      <h2 style="color: blue">Rélévé de compte</h2> <br>   
+    <img src="../assets/bank.png" alt="bnp" style="width: 53%;">
+      <h2 style="color: blue">SYNTHÈSE DE VOTRE COMPTE</h2> <br>   
     
       <addcompt class="class" @addOperation= "operation => add(operation)"></addcompt>
-      <listoperation :operations="operations" @removeOperation= "index => remove(index)"> </listoperation>  
+      <listoperation :operations="operations" @removeOperation= "id => remove(id)"> </listoperation>  
   </section>
   
   
@@ -13,6 +13,11 @@
 <script>
 import listoperation from "./listoperation.vue";
 import addcompt from "./addcompt.vue";
+import api from "../api";
+import Api from '../api';
+import Dao from './Dao';
+
+
 
 export default {
   name: "accountmanager",
@@ -22,16 +27,35 @@ export default {
   },
   data: () => ({
     operations: [
-      { id: 1, montant: "1000",category: "loyer",       date: "2018-01-02" },
-      { id: 2, montant: "300", category: "alimentaire", date: "2017-12-02" },
-    ]
+  ]
   }),
+  beforeCreate(){
+
+    let dao = new Dao();
+    dao.getAll().then((responses) => {
+      this.operations = responses.data;
+    })
+  },
   methods: {
     add(operation) {
-      this.operations.push(operation);
+      let dao = new Dao();
+      dao.add(operation).then((responses) => {
+        dao.getAll().then((responses) => {
+         this.operations = responses.data;
+        })
+      
+      })
     },
-    remove(index) {
-      this.operations.splice(index, 1);
+
+    remove(id) {
+
+      let dao = new Dao();
+      dao.remove(id).then((responses) => {
+        dao.getAll().then((responses) => {
+         this.operations = responses.data;
+        });
+
+      })
     }
   }
 };

@@ -1,0 +1,50 @@
+{
+  "account": [
+    {
+      "id": 1,
+      "montant": "1000",
+      "category": "loyer",
+      "date": "2018-01-02"
+    },
+    {
+      "category": "Vetement",
+      "type": "",
+      "text": "H&M",
+      "montant": "54",
+      "date": "2018-03-06",
+      "id": 5
+    },
+    {
+      "category": "Loisirs",
+      "type": "",
+      "text": "cinéma",
+      "montant": "30",
+      "date": "2018-03-15",
+      "id": 6
+    },
+    {
+      "category": "Alimentaire",
+      "type": "",
+      "text": "super U",
+      "montant": "80",
+      "date": "2018-03-15",
+      "id": 7
+    },
+    {
+      "category": "Alimentaire",
+      "type": "",
+      "text": "super Casino",
+      "montant": "234",
+      "date": "2018-03-15",
+      "id": 8
+    },
+    {
+      "category": "Sport",
+      "type": "",
+      "text": "fitness club",
+      "montant": "34",
+      "date": "2018-03-15",
+      "id": 9
+    }
+  ]
+}
